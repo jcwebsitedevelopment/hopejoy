@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Presentación del Proyecto — Hope & Joy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy:  #1B3F7A;
+      --green: #2D7A32;
+      --gray:  #64748B;
+      --light: #F7F9FC;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--light); color: #1A202C; }
+
+    /* HEADER */
+    .top-bar {
+      background: var(--navy);
+      padding: 16px 5%;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .top-bar-logo { display: flex; align-items: center; gap: 12px; }
+    .top-bar-logo img { height: 48px; filter: brightness(0) invert(1); opacity: 0.9; }
+    .top-bar-tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+    }
+    .top-bar-right { font-size: 13px; color: rgba(255,255,255,0.5); }
+    .top-bar-right strong { color: rgba(255,255,255,0.85); }
+
+    /* HERO SLIDE */
+    .hero-slide {
+      background: linear-gradient(135deg, #1B3F7A 0%, #2D7A32 100%);
+      padding: 80px 5% 72px;
+      text-align: center;
+    }
+    .hero-slide .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 50px; padding: 6px 18px;
+      font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.85);
+      margin-bottom: 24px; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .hero-slide h1 {
+      font-size: 48px; font-weight: 900; color: white; line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero-slide h1 span { color: #6EE77A; }
+    .hero-slide p {
+      font-size: 18px; color: rgba(255,255,255,0.7);
+      max-width: 560px; margin: 0 auto 36px; line-height: 1.7;
+    }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 36px; font-weight: 900; color: white; }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 500; margin-top: 4px; letter-spacing: 0.5px; }
+
+    /* SECTION */
+    .section { padding: 72px 5%; }
+    .section-inner { max-width: 1000px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--green); margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: 32px; font-weight: 800; color: var(--navy);
+      margin-bottom: 10px; line-height: 1.2;
+    }
+    .section-sub {
+      font-size: 16px; color: var(--gray); line-height: 1.7;
+      max-width: 600px; margin-bottom: 48px;
+    }
+
+    /* FEATURE CARDS */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: white; border-radius: 16px;
+      padding: 28px 24px; border: 1px solid #E8EFF8;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(27,63,122,.08);
+    }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 16px;
+    }
+    .feature-icon.blue  { background: #EBF2FF; }
+    .feature-icon.green { background: #E8F5E9; }
+    .feature-icon.gold  { background: #FFF8E1; }
+    .feature-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .feature-card p  { font-size: 13px; color: var(--gray); line-height: 1.7; }
+
+    /* PAGE TOUR */
+    .tour-list { display: flex; flex-direction: column; gap: 16px; }
+    .tour-item {
+      background: white; border-radius: 16px;
+      padding: 24px 28px;
+      border: 1px solid #E8EFF8;
+      display: flex; align-items: flex-start; gap: 20px;
+    }
+    .tour-num {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--navy), #2D5FA8);
+      color: white; font-size: 16px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .tour-content h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+    .tour-content p  { font-size: 13px; color: var(--gray); line-height: 1.6; }
+    .tour-tag {
+      display: inline-block;
+      background: #E8F5E9; color: var(--green);
+      font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 50px;
+      margin-top: 8px; letter-spacing: 0.5px;
+    }
+    .tour-tag.blue { background: #EBF2FF; color: var(--navy); }
+    .tour-tag.gold { background: #FFF8E1; color: #92630a; }
+
+    /* NEXT STEPS */
+    .bg-navy { background: var(--navy); }
+    .bg-navy .section-label { color: #6BAED6; }
+    .bg-navy .section-title { color: white; }
+    .bg-navy .section-sub   { color: rgba(255,255,255,0.6); }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .step-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px; padding: 24px 20px;
+    }
+    .step-num {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      margin-bottom: 10px;
+    }
+    .step-card h3 { font-size: 15px; font-weight: 700; color: white; margin-bottom: 8px; }
+    .step-card p  { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+    .step-status {
+      display: inline-block;
+      margin-top: 12px; padding: 4px 12px;
+      border-radius: 50px; font-size: 11px; font-weight: 700;
+    }
+    .status-done    { background: #E8F5E9; color: #2D7A32; }
+    .status-pending { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.55); }
+
+    /* FOOTER */
+    .pres-footer {
+      background: #080F1E; padding: 32px 5%;
+      text-align: center;
+    }
+    .pres-footer p { font-size: 13px; color: rgba(255,255,255,0.3); }
+    .pres-footer strong { color: rgba(255,255,255,0.6); }
+
+    /* ALT BG */
+    .bg-light { background: white; }
+
+    @media (max-width: 768px) {
+      .hero-slide h1 { font-size: 32px; }
+      .hero-stats { gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-logo">
+    <img src="assets/logo.png" alt="Hope & Joy"/>
+    <span class="top-bar-tag">Presentación del Proyecto</span>
+  </div>
+  <div class="top-bar-right">Preparado por <strong>JC Web Design</strong></div>
+</div>
+
+<!-- HERO -->
+<div class="hero-slide">
+  <div class="eyebrow">✅ Proyecto completado</div>
+  <h1>Tu nueva web está<br/><span>lista, Paola.</span></h1>
+  <p>Aquí tienes un resumen de todo lo que hemos construido juntos para Hope & Joy Cleaning Services.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Páginas completas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Idiomas (EN / ES)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Ciudades cubiertas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Diseño a medida</div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="section">
+  <div class="section-inner">
+    <p class="section-label">Lo que incluye</p>
+    <h2 class="section-title">Todo lo que tiene tu web</h2>
+    <p class="section-sub">Cada elemento fue pensado para que los clientes confíen en tu negocio desde el primer segundo que visiten la página.</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon blue">🌐</div>
+        <h3>Bilingüe — Inglés y Español</h3>
+        <p>El cliente elige su idioma con un botón. Todo el contenido cambia al instante. Alcanzas a familias hispanas y clientes americanos por igual.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon green">📱</div>
+        <h3>Funciona en móvil, tablet y PC</h3>
+        <p>La mayoría de tus clientes te van a encontrar desde el teléfono. La web se adapta perfectamente a cualquier pantalla.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon gold">💬</div>
+        <h3>Botón de WhatsApp siempre visible</h3>
+        <p>Un botón flotante en toda la página que lleva directo a tu WhatsApp. Un toque y el cliente ya te está escribiendo.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon blue">📋</div>
+        <h3>Formulario de cotización</h3>
+        <p>Los clientes pueden pedir una cotización gratis directamente desde la web. Recibes el nombre, teléfono, tipo de servicio y mensaje.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon green">🔍</div>
+        <h3>Optimizada para Google (SEO)</h3>
+        <p>La estructura de la web está preparada para aparecer en búsquedas como "cleaning services Orlando" o "limpieza de casas Kissimmee".</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon gold">⚖️</div>
+        <h3>Legalmente protegida</h3>
+        <p>Incluye Política de Privacidad y Términos de Servicio conforme a las leyes de Florida. Tu negocio está cubierto.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE TOUR -->
+<div class="section bg-light">
+  <div class="section-inner">
+    <p class="section-label">Recorrido por la web</p>
+    <h2 class="section-title">Sección por sección</h2>
+    <p class="section-sub">Esto es lo que ve un cliente cuando entra a tu página, de arriba a abajo.</p>
+
+    <div class="tour-list">
+      <div class="tour-item">
+        <div class="tour-num">1</div>
+        <div class="tour-content">
+          <h3>Hero — Primera impresión</h3>
+          <p>Lo primero que ve el cliente: tu logo, una imagen de fondo diseñada con inteligencia artificial, el slogan, y dos botones para cotización y WhatsApp. Impacto inmediato.</p>
+          <span class="tour-tag blue">Imagen creada con IA</span>
+          <span class="tour-tag">Animación de burbujas</span>
+        </div>
+      </div>
+      <div class="tour-item">
+        <div class="tour-num">2</div>
+        <div class="tour-content">
+          <h3>Servicios</h3>
+          <p>Limpieza residencial, comercial, post-construcción, Airbnb, mudanzas y deep cleaning — cada servicio con su descripción clara.</p>
+          <span class="tour-tag">6 servicios detallados</span>
+        </div>
+      </div>
+      <div class="tour-item">
+        <div class="tour-num">3</div>
+        <div class="tour-content">
+          <h3>¿Por qué elegirnos?</h3>
+          <p>Productos eco-friendly, equipo confiable, horarios flexibles y garantía de satisfacción. Los valores que diferencian a Hope & Joy.</p>
+          <span class="tour-tag green">Genera confianza</span>
+        </div>
+      </div>
+      <div class="tour-item">
+        <div class="tour-num">4</div>
+        <div class="tour-content">
+          <h3>Áreas de servicio</h3>
+          <p>Orlando, Kissimmee, Davenport y Haines City — cada ciudad con su propia foto real. El cliente ve inmediatamente si atiendes su zona.</p>
+          <span class="tour-tag blue">Fotos reales de cada ciudad</span>
+        </div>
+      </div>
+      <div class="tour-item">
+        <div class="tour-num">5</div>
+        <div class="tour-content">
+          <h3>Sobre nosotros</h3>
+          <p>La historia de Hope & Joy, la misión y la visión del negocio. El espacio para la foto del equipo está listo cuando tengas las fotos profesionales.</p>
+          <span class="tour-tag gold">📸 Espacio para tus fotos</span>
+        </div>
+      </div>
+      <div class="tour-item">
+        <div class="tour-num">6</div>
+        <div class="tour-content">
+          <h3>Formulario de contacto</h3>
+          <p>El cliente llena nombre, teléfono, email, tipo de servicio y mensaje. Al enviar, unas burbujas salen del botón — un detalle especial que nadie más tiene.</p>
+          <span class="tour-tag">Animación exclusiva al enviar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NEXT STEPS -->
+<div class="section bg-navy">
+  <div class="section-inner">
+    <p class="section-label">Próximos pasos</p>
+    <h2 class="section-title">Para lanzar al mundo</h2>
+    <p class="section-sub">La web está lista. Estas son las piezas que faltan para que cualquier persona en internet pueda encontrarla.</p>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">Paso 1</div>
+        <h3>Dominio</h3>
+        <p>Comprar tu dirección web, por ejemplo: hopejoycleaningservices.com — coste anual ~$15/año.</p>
+        <span class="step-status status-pending">Pendiente</span>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Paso 2</div>
+        <h3>Hosting</h3>
+        <p>El servidor donde vive la web. Opciones desde $5–10/mes. Se puede gestionar todo junto con el dominio.</p>
+        <span class="step-status status-pending">Pendiente</span>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Paso 3</div>
+        <h3>Fotos profesionales</h3>
+        <p>El espacio "Sobre nosotros" está reservado para tus fotos del equipo. Cuando las tengas, se añaden en minutos.</p>
+        <span class="step-status status-pending">Pendiente</span>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Paso 4</div>
+        <h3>Formulario activo</h3>
+        <p>Conectar el formulario a tu email para recibir las solicitudes directamente. Un paso técnico rápido.</p>
+        <span class="step-status status-pending">Pendiente</span>
+      </div>
+      <div class="step-card">
+        <div class="step-num">✅ Listo</div>
+        <h3>La web completa</h3>
+        <p>Diseño, contenido, bilingüe, legal, animaciones, móvil — todo terminado y listo para publicar.</p>
+        <span class="step-status status-done">Completado</span>
+      </div>
+      <div class="step-card">
+        <div class="step-num">✅ Listo</div>
+        <h3>Google Business</h3>
+        <p>La estructura SEO está lista. Una vez publicada, se puede vincular con el perfil de Google Business.</p>
+        <span class="step-status status-done">Preparado</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="pres-footer">
+  <p>Diseñado y desarrollado por <strong>JC Web Design</strong> · Orlando, Florida · 2026</p>
+</div>
+
+</body>
+</html>
