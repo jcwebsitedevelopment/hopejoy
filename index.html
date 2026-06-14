@@ -1252,23 +1252,16 @@
       );
     }
 
-    function startTimer() { timer = setInterval(() => goTo(current + 1), 4500); }
-
-    carousel.addEventListener('mouseenter', () => clearInterval(timer));
-    carousel.addEventListener('mouseleave', startTimer);
-
     // Touch / swipe
     let startX = 0;
     carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
     carousel.addEventListener('touchend',   e => {
       const diff = startX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) { clearInterval(timer); goTo(diff > 0 ? current + 1 : current - 1); startTimer(); }
+      if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
     });
 
-    window.carouselPrev = () => { clearInterval(timer); goTo(current - 1); startTimer(); };
-    window.carouselNext = () => { clearInterval(timer); goTo(current + 1); startTimer(); };
-
-    startTimer();
+    window.carouselPrev = () => goTo(current - 1);
+    window.carouselNext = () => goTo(current + 1);
   })();
 
   // Floating bubbles
