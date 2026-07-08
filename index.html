@@ -22,15 +22,18 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "HousekeepingBusiness"],
     "name": "Hope & Joy Cleaning Services LLC",
-    "description": "Professional commercial and residential cleaning services in Orlando, FL. Specializing in office, commercial, Airbnb, post-construction, and house cleaning.",
+    "description": "Professional commercial and residential cleaning services in Orlando, FL. Specializing in office, commercial, Airbnb, post-construction, and house cleaning. Licensed & insured.",
     "url": "https://hopejoycommercial.com",
     "telephone": "+13217106128",
     "email": "info@hopejoycommercial.com",
     "image": "https://hopejoycommercial.com/assets/og-image.webp",
     "logo": "https://hopejoycommercial.com/assets/logo.webp",
     "priceRange": "$$",
+    "currenciesAccepted": "USD",
+    "paymentAccepted": "Cash, Credit Card, Zelle, Venmo",
+    "knowsLanguage": ["English", "Spanish"],
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Orlando",
@@ -43,18 +46,33 @@
       "longitude": -81.3792
     },
     "areaServed": [
-      "Orlando", "Kissimmee", "Sanford", "Lake Nona", "Winter Park", "Apopka", "Ocoee"
+      { "@type": "City", "name": "Orlando" },
+      { "@type": "City", "name": "Kissimmee" },
+      { "@type": "City", "name": "Sanford" },
+      { "@type": "City", "name": "Lake Nona" },
+      { "@type": "City", "name": "Winter Park" },
+      { "@type": "City", "name": "Apopka" },
+      { "@type": "City", "name": "Ocoee" }
     ],
-    "serviceType": [
-      "House Cleaning",
-      "Commercial Cleaning",
-      "Office Cleaning",
-      "Airbnb Cleaning",
-      "Post-Construction Cleaning",
-      "Post-Event Cleaning",
-      "Medical Office Cleaning"
-    ],
-    "openingHours": "Mo-Sa 08:00-18:00",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Cleaning Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "House Cleaning", "description": "Professional residential cleaning services in Orlando and Central Florida." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial Cleaning", "description": "Reliable commercial cleaning for offices and businesses in Orlando." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Airbnb Cleaning", "description": "Fast and thorough Airbnb turnover cleaning to maintain 5-star reviews." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Post-Construction Cleaning" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Post-Event Cleaning" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Medical Office Cleaning" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Office Cleaning" } }
+      ]
+    },
     "sameAs": [
       "https://instagram.com/hopejoycleaningservicesllc"
     ]
